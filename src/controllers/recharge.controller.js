@@ -22,7 +22,7 @@ export async function handleChargeCreated(req, res) {
                 const processResult = await recharge.processCharge(charge.id);
 
                 if (processResult) {
-                    date.setDate(date.getDate() + subscription.charge_interval_frequency+8);
+                    date.setDate(date.getDate() + subscription.charge_interval_frequency);
                     const formattedDate = date.toISOString().split('T')[0];
 
                     await recharge.changeSubscriptionNextDate(subscription.id, formattedDate)
